@@ -1,5 +1,6 @@
 import json
 import heapq
+import os
 
 def carregar_grafo(caminho_arquivo):
     try:
@@ -85,15 +86,16 @@ def executar_teste(grafo, origem, destino):
     print("-" * 40)
 
 def main():
-    print("=== Algoritmo de Dijkstra - Busca com Custo Uniforme ===")
+    print(" Algoritmo de Dijkstra - Busca com Custo Uniforme ")
     
-    arquivo_grafo = "grafo.json"
+    diretorio_script = os.path.dirname(os.path.abspath(__file__))
+    arquivo_grafo = os.path.join(diretorio_script, "grafo.json")
     grafo = carregar_grafo(arquivo_grafo)
     
     if grafo is None:
         return
     
-    print(f"Grafo carregado com sucesso de '{arquivo_grafo}'")
+    print(f"Grafo carregado com sucesso de '{os.path.basename(arquivo_grafo)}'")
     print(f"Vértices disponíveis: {', '.join(grafo.keys())}")
     
     while True:
